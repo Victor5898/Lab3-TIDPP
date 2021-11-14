@@ -2,8 +2,26 @@
 
 pipeline
 {
-
 	agent any
+
+	options 
+	{
+          	buildDiscarder(logRotator(numToKeepStr: '10'))
+          	timestamps()
+     	}
+
+	parameters
+	{
+		booleanParam(name: 'CLEAN_WORKSPACE', defaultValue: false, description: 'Delete folder created by Jenkins for current build if true')
+		booleanParam(name: 'TESTING_FRONTEND', defaultValue: false , description: 'If true- execute front-end testing')
+		
+	}
+
+	envivonment
+	{
+		 ON_SUCCESS_SEND_EMAIL = 'true'
+		 ON_FAILURE_SEND_EMAIL = 'true'
+	}
 	
 	stages()
 	{
@@ -12,14 +30,46 @@ pipeline
 			steps
 			{
 				echo "Build number ${BUILD_NUMBER} with tag ${BUILD_TAG}"
+				
+				bat 	 'py -m venv "${BUILD_TAG}" && \
+                    			 . ${BUILD_TAG}/bin/activate && \
+                    			  ${BUILD_TAG}/bin/pip install --upgrade pip && \
+                      			  ${BUILD_TAG}/bin/pip install -r requirements.txt && \
+                    			  python manage.py makemigrations && python manage.py migrate && py -m py_compile 					  manage.py && deactivate'
+				script
+				{
+					if(params.CLEAN_WORKSPACE)
+					{
+						cleanWs()
+					}
+				}
 			}
 		}
 		
-		stage("Test")
+		stage("Test back-end")
 		{
 			steps
 			{
-				echo "Test step"
+				bat '. ${BUILD_TAG}/bin/activate && py manage.py test --verbose --junit-xlm test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
+				
+				always
+				{
+					junit test-reports/test-result.xlm
+				}
+			}	
+		}
+
+		stage("Test front-end")
+		{
+			steps
+			{
+				script
+				{
+					if(params.TESTING_FRONTEND == 'true')
+					{
+						echo "Valoarea parametrului TESTING_FRONTEND este ${params.TESTING_FRONTEND}"
+					}			
+				}
 			}
 		}
 		
