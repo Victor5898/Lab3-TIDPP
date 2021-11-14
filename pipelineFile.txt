@@ -1,0 +1,29 @@
+#!groovy
+
+pipeline
+{
+
+	agent any
+	
+	stages
+	{
+		stage("Build")
+		{	
+			steps
+			{
+				echo "Build number ${BUILD_NUMBER} with tag ${BUILD_TAG}"
+			}
+		}
+		
+		stage("Test")
+		{
+			
+		}
+		
+		stages("Deployment")
+		{
+			
+		}
+	}
+
+}
