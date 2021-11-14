@@ -5,7 +5,7 @@ pipeline
 
 	agent any
 	
-	stages
+	stages()
 	{
 		stage("Build")
 		{	
@@ -17,11 +17,18 @@ pipeline
 		
 		stage("Test")
 		{
-			
+			steps
+			{
+				echo "Test step"
+			}
 		}
 		
-		stages("Deployment")
+		stage("Deployment")
 		{
+			steps
+			{
+				echo "Deployment step"
+			}
 			
 		}
 	}
