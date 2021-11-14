@@ -7,7 +7,6 @@ pipeline
 	options 
 	{
           	buildDiscarder(logRotator(numToKeepStr: '10'))
-          	timestamps()
      	}
 
 	parameters
@@ -17,7 +16,7 @@ pipeline
 		
 	}
 
-	envivonment
+	environment
 	{
 		 ON_SUCCESS_SEND_EMAIL = 'true'
 		 ON_FAILURE_SEND_EMAIL = 'true'
