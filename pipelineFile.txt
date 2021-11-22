@@ -30,15 +30,12 @@ pipeline
 			{
 				echo "Build number ${BUILD_NUMBER} with tag ${BUILD_TAG}"
 					
-				withEnv(["HOME=${env.WORKSPACE}"])
-				{
-					sh 'py -m venv "${BUILD_TAG}" && \
-                    			. ${BUILD_TAG}/Scripts/activate && \
-                    			${BUILD_TAG}/Scripts/pip install --upgrade pip && \
-                    			${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
-                    			py manage.py makemigrations && py manage.py migrate && \
-                    			deactivate'
-				}
+				sh 'py -m venv "${BUILD_TAG}" && \
+                    		. ${BUILD_TAG}/Scripts/activate && \
+                    		${BUILD_TAG}/Scripts/pip install --upgrade pip && \
+                    		${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
+                    		py manage.py makemigrations && py manage.py migrate && \
+                    		deactivate'
 	
 				script
 				{
