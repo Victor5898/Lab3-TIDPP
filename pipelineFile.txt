@@ -51,7 +51,7 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test --verbose --junit-xlm test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test --junit-xlm test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
 				
 				always
 				{
