@@ -34,6 +34,7 @@ pipeline
 				{
 					sh 'py -m venv "${BUILD_TAG}" && \
                     			. ${BUILD_TAG}/Scripts/activate && \
+					py -m pip install mitmproxy && \
                     			${BUILD_TAG}/Scripts/pip install --upgrade pip && \
                     			${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
                     			py manage.py makemigrations && py manage.py migrate && \
