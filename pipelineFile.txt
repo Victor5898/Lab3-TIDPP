@@ -32,7 +32,7 @@ pipeline
 					
 				withEnv(["HOME=${env.WORKSPACE}"])
 				{
-					sh 'python3.8 -m venv "${BUILD_TAG}" && \
+					sh 'py -m venv "${BUILD_TAG}" && \
                     			. ${BUILD_TAG}/Scripts/activate && \
                     			${BUILD_TAG}/Scripts/pip install --upgrade pip && \
                     			${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
