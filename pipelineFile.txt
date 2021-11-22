@@ -33,7 +33,7 @@ pipeline
 				withEnv(["HOME=${env.WORKSPACE}"])
 				{
 					bat 'py -m venv "%BUILD_TAG%"'
-					bat '. %BUILD_TAG%/bin/activate'
+					bat './%BUILD_TAG%/bin/activate'
 					bat '${BUILD_TAG}/bin/pip install --upgrade pip'
 					bat '${BUILD_TAG}/bin/pip install -r requirements.txt'
 					bat 'py manage.py makemigrations'
