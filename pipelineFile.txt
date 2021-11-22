@@ -32,11 +32,7 @@ pipeline
 					
 				withEnv(["HOME=${env.WORKSPACE}"])
 				{
-					bat 'py -m venv "${BUILD_TAG}" && \
-                    			cd ${BUILD_TAG}/Scripts activate.ps1 && \
-                    			${BUILD_TAG}/Scripts/pip install --upgrade pip && \
-                    			${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
-                    			python manage.py makemigrations && python manage.py migrate'
+					bat 'pip install -U pipenv $$ pipenv install $$ pipenv shell $$ py manage.py migrate'
 				}	
 				script
 				{
