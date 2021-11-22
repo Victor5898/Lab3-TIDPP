@@ -32,7 +32,7 @@ pipeline
 					
 				sh 'py -m venv "${BUILD_TAG}" && \
                     		. ${BUILD_TAG}/Scripts/activate && \
-                    		${BUILD_TAG}/Scripts/pip install --upgrade pip --user && \
+                    		${BUILD_TAG}/Scripts/pip install --upgrade pip && \
                     		${BUILD_TAG}/Scripts/pip install -r requirements.txt --user && \
                     		py manage.py makemigrations && py manage.py migrate && \
                     		deactivate'
