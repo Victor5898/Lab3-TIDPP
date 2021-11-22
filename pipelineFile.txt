@@ -32,7 +32,7 @@ pipeline
 					
 				withEnv(["HOME=${env.WORKSPACE}"])
 				{
-					bat 'pip install -U pipenv $$ pipenv install $$ pipenv shell $$ py manage.py migrate'
+					bat 'pip install -U pipenv $$ pipenv install requirements.txt $$ pipenv shell $$ py manage.py migrate'
 				}	
 				script
 				{
