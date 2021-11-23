@@ -49,8 +49,9 @@ pipeline
 			}
 			post
 			{
-				success
+				always
 				{
+					archive "target/**/*"
 					junit '**/test-reports/*.xlm'
 				}
 			}
