@@ -51,7 +51,7 @@ pipeline
 			{
 				always
 				{
-					archive "target/**/*"
+					sh 'cd **/test-reports && touch *.xml'
 					junit '**/test-reports/*.xlm'
 				}
 			}
