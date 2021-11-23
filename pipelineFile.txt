@@ -45,16 +45,7 @@ pipeline
 			{
 				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test && deactivate'
 					
-			}
-			post
-			{
-				always
-				{
-					sh 'cd test-reports && touch test-reports.xml' 
-					junit allowEmptyResults: true, skipMarkingBuildUnstable: true, skipPublishingChecks: true, testResults: '**/test-reports/*.xml '
-				}
-			}
-				
+			}	
 		}
 
 		stage("Test front-end")
@@ -94,11 +85,9 @@ pipeline
 					cleanWs()
 				}
 			}
+
+			junit '**/test-reports/*.xml'
 		}
 		
-	}
-	unstable
-	{
-		exit 0
 	}
 }
