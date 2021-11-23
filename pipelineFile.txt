@@ -44,20 +44,13 @@ pipeline
 			steps
 			{
 				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test && deactivate'
-				
-				script
-				{
-                    			def testResults = findFiles(glob: '**/test-reports/*.xlm')
-                    			for(xml in testResults) 
-					{
-                        			touch xml.getPath()
-                    			}
-				}	
+					
 			}
 			post
 			{
 				always
 				{
+					sh 'find . -name "*.xml" -exec touch {} \\;'
 					junit '**/test-reports/*.xlm'
 				}
 			}
