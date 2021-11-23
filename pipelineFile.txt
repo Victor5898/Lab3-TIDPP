@@ -55,11 +55,14 @@ pipeline
 				
 				
 			}
-			
-			always
+			post
 			{
-				junit test-reports/test-result.xlm
-			}	
+				success
+				{
+					junit test-reports/test-result.xlm
+				}
+			}
+				
 		}
 
 		stage("Test front-end")
