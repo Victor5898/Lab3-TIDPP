@@ -50,8 +50,7 @@ pipeline
 			{
 				always
 				{
-					achieveArtifacts 'target1/*.jar'
-					junit '**/test-reports/*.xlm'
+					junit '**/*.xlm'
 				}
 			}
 				
