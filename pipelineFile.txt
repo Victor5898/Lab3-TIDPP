@@ -50,7 +50,8 @@ pipeline
 			{
 				always
 				{
-					junit '**/*.xlm'
+					sh 'cd test-reports && touch test-report.xlm'
+					junit '**/test-reports/*.xlm'
 				}
 			}
 				
