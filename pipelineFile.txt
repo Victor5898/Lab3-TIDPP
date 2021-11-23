@@ -51,7 +51,7 @@ pipeline
 				always
 				{
 					sh 'cd test-reports && touch test-reports.xml' 
-					junit skipPublishingChecks: true, skipMarkingBuildUnstable: true, testResults: '**/test-reports/*.xml'
+					junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: '**/test-reports/*.xml '
 				}
 			}
 				
