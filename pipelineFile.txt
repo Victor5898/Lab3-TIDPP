@@ -89,15 +89,17 @@ pipeline
 			junit '**/test-reports/*.xml'
 		}
 		
+		unstable 
+		{
+              		echo "The build is unstable. Try fix it"
+        	}	
+
+        	failure 
+		{
+              		echo "Something happened"
+        	}
+		
 	}
 
-	unstable 
-	{
-              echo "The build is unstable. Try fix it"
-        }
-
-        failure 
-	{
-              echo "Something happened"
-        }
+	
 }
