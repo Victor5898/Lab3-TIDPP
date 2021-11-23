@@ -50,7 +50,7 @@ pipeline
 			{
 				always
 				{
-					sh 'touch test-results.xml'
+					junit testResults: jUnitReports, allowEmptyResults: true
 					junit '**/test-reports/*.xlm'
 				}
 			}
