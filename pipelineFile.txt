@@ -85,12 +85,16 @@ pipeline
 
 	post
 	{
-		script
+		always
 		{
-			if(params.CLEAN_WORKSPACE)
+			script
 			{
-				cleanWs()
+				if(params.CLEAN_WORKSPACE)
+				{
+					cleanWs()
+				}
 			}
 		}
+		
 	}
 }
