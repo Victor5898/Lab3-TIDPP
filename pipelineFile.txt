@@ -51,12 +51,14 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py -m pytest --ds=django-legder.settings && py -m pytest --junit-xml=test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test && deactivate'
 				
-				always
-				{
-					junit test-reports/test-result.xlm
-				}
+				
+			}
+			
+			always
+			{
+				junit test-reports/test-result.xlm
 			}	
 		}
 
