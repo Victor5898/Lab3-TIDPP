@@ -50,7 +50,6 @@ pipeline
 			{
 				always
 				{
-					junit testResults: jUnitReports, allowEmptyResults: true
 					junit '**/test-reports/*.xlm'
 				}
 			}
