@@ -97,4 +97,8 @@ pipeline
 		}
 		
 	}
+	unstable
+	{
+		exit 0
+	}
 }
