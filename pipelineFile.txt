@@ -51,7 +51,7 @@ pipeline
 			{
 				success
 				{
-					junit test-reports/test-result.xlm
+					junit '**/target/surefire-reports/Test-*.xlm'
 				}
 			}
 				
