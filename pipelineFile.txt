@@ -50,7 +50,7 @@ pipeline
 			{
 				always
 				{
-					sh 'find . -name "*.xml" -exec touch {} \\;'
+					touch test-results.xml'
 					junit '**/test-reports/*.xlm'
 				}
 			}
