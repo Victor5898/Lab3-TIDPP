@@ -50,7 +50,8 @@ pipeline
 			{
 				always
 				{
-					junit skipPublishingChecks: true, testResults: '**/test-reports/*.xlm'
+					sh 'cd test-reports && touch test-reports.xml' 
+					junit skipPublishingChecks: true, skipMarkingBuildUnstable: true, testResults: '**/test-reports/*.xlm'
 				}
 			}
 				
