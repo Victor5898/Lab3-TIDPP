@@ -33,6 +33,7 @@ pipeline
 				sh 'py -m venv "${BUILD_TAG}" && \
                     		. ${BUILD_TAG}/Scripts/activate && \
 				py -m pip install Pillow && \
+
                     		${BUILD_TAG}/Scripts/pip install -r requirements.txt && \
                     		py manage.py makemigrations && py manage.py migrate && \
                     		deactivate'
@@ -51,7 +52,7 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test --junit-xlm test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test && junit test-reports/test-result.xlm && deactivate'
 				
 				always
 				{
