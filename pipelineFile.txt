@@ -51,7 +51,7 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py -m pytest --ds=test.settings && py -m pytest --junit-xml=test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py -m pytest --ds=django-legder.settings && py -m pytest --junit-xml=test-reports/test-result.xlm django_ledger/tests/test_* && deactivate'
 				
 				always
 				{
