@@ -50,7 +50,6 @@ pipeline
 			{
 				always
 				{
-					sh 'cd test-reports && touch test-report.xlm && echo " " > test-report.xlm' 
 					junit skipPublishingChecks: true, testResults: '**/test-reports/*.xlm'
 				}
 			}
