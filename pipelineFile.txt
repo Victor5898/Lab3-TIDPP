@@ -79,14 +79,17 @@ pipeline
 			}
 			
 		}
-		post
+
+		
+	}
+
+	post
+	{
+		script
 		{
-			script
+			if(params.CLEAN_WORKSPACE)
 			{
-				if(params.CLEAN_WORKSPACE)
-				{
-					cleanWs()
-				}
+				cleanWs()
 			}
 		}
 	}
