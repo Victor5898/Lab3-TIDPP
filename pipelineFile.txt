@@ -44,7 +44,7 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py manage.py test && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py.test --junitxml=**/test-reports/test-report.xml && deactivate'
 					
 			}	
 		}
