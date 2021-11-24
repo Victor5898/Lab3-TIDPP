@@ -86,11 +86,36 @@ pipeline
 					cleanWs()
 				}
 			}	
-		}
+		
 
-		success
-		{
 			junit '**/test-reports/*.xml'
 		}
+		
+		success
+		{
+			script
+			{
+				if(env.ON_SUCCESS_SEND_EMAIL)
+				{
+					echo "Sending email with job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}"
+					emailtext(body: "Success build! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins success build ${BUILD_NUMBER}', to 'victor.covrig321@gmail.com')
+					echo "Email send: build success"
+				}
+			}
+		}
+
+		failure
+		{
+			script
+			{
+				if(env.ON_SUCCESS_SEND_EMAIL)
+				{
+					echo "Sending email with job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}"
+					emailtext(body: "Build failed. Please fix it! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins failed build ${BUILD_NUMBER}', to 'victor.covrig321@gmail.com')
+					echo "Email send: build failure"
+				}
+			}
+			
+		}	
 	}	
 }
