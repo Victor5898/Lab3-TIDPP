@@ -44,7 +44,7 @@ pipeline
 		{
 			steps
 			{
-				sh '. ${BUILD_TAG}/Scripts/activate && py.test --junitxml=/test-reports/test-report.xml && deactivate'
+				sh '. ${BUILD_TAG}/Scripts/activate && py.test --junitxml=C:/ProgramData/Jenkins/.jenkins/workspace/Lab3-TIDPP/test-reports/test-report.xml && deactivate'
 					
 			}	
 		}
