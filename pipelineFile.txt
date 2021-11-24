@@ -98,7 +98,7 @@ pipeline
 				if(env.ON_SUCCESS_SEND_EMAIL)
 				{
 					echo "Sending email with job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}"
-					emailext(body: "Success build! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins success build ${BUILD_NUMBER}', to: 'victor.covrig321@gmail.com')
+					emailtext(body: "Success build! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins success build ${BUILD_NUMBER}', to 'victorcovrig464@gmail.com')
 					echo "Email send: build success"
 				}
 			}
@@ -111,7 +111,7 @@ pipeline
 				if(env.ON_SUCCESS_SEND_EMAIL)
 				{
 					echo "Sending email with job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}"
-					emailext(body: "Build failed. Please fix it! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins failed build ${BUILD_NUMBER}', to: 'victor.covrig321@gmail.com')
+					emailtext(body: "Build failed. Please fix it! job name: ${JOB_NAME}, build number: ${BUILD_NUMBER}, build url: ${BUILD_URL}", subject: 'Jenkins failed build ${BUILD_NUMBER}', to 'victorcovrig464@gmail.com')
 					echo "Email send: build failure"
 				}
 			}
