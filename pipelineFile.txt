@@ -79,16 +79,16 @@ pipeline
 	{
 		always
 		{
+				
+			junit '**/test-reports/*.xml'
+
 			script
 			{
 				if(params.CLEAN_WORKSPACE)
 				{
 					cleanWs()
 				}
-			}	
-		
-
-			junit '**/test-reports/*.xml'
+			}
 		}
 		
 		success
