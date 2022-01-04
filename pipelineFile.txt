@@ -64,6 +64,16 @@ pipeline
 			}
 		}
 		
+		stage("Delivery")
+		{
+			steps
+			{
+				sh 'docker build -t victor435/python_app \
+				docker login -u victor435 -p 1doi3patru5sase && \
+				docker push victor435/python_app'
+			}
+		}
+		
 		stage("Deployment")
 		{
 			steps
@@ -72,8 +82,6 @@ pipeline
 			}
 			
 		}
-
-		
 	}
 
 	post
