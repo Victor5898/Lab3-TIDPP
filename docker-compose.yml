@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+    app:
+        container_name: app_container
+        env_file: .env
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+           - "8000:8000"
+        volumes:
+           - .:/app
+        image: python_app
+            
+    sqlite:
+        container_name: sqlite_container
+        env_file: .env
+        image: nouchka/sqlite3:latest
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./db/:/db.sqlite3
+        
+            
+    sqlite_web:
+        container_name: sqlite_web_container
+        image: linuxserver/sqlitebrowser
+        ports: 
+            - "3000:3000"
+        env_file: .env
+        
+            
