@@ -68,36 +68,35 @@ pipeline
 		{
 			steps
 			{
-				touch Dokerfile && echo -e " \
-# Dockerfile\n \
+				touch Dokerfile && echo -e "# Dockerfile\n \
 
-FROM python:3.10.1-buster\n \
+				FROM python:3.10.1-buster\n \
 
-ENV PYTHONDONTWRITEBYTECODE 1\n \
-ENV PYTHONUNBUFFERED 1\n \
+				ENV PYTHONDONTWRITEBYTECODE 1\n \
+				ENV PYTHONUNBUFFERED 1\n \
 
-RUN mkdir /app\n \
-WORKDIR /app\n \
+				RUN mkdir /app\n \
+				WORKDIR /app\n \
 
-RUN pip install --upgrade pip\n \
+				RUN pip install --upgrade pip\n \
 
-CMD python -m venv ${BUILD_TAG}\n \
+				CMD python -m venv ${BUILD_TAG}\n \
 
-COPY ${BUILD_TAG}/Scripts/activate /app/\n \
+				COPY ${BUILD_TAG}/Scripts/activate /app/\n \
 
-CMD . /app/${BUILD_TAG}/Scripts/activate\n \
+				CMD . /app/${BUILD_TAG}/Scripts/activate\n \
 
-COPY requirements.txt /app/\n \
+				COPY requirements.txt /app/\n \
 
-RUN pip install -r /app/requirements.txt\n \
-COPY . /app/\n \
+				RUN pip install -r /app/requirements.txt\n \
+				COPY . /app/\n \
 
-CMD ["python", "-m", "manage.py", "makemigrations"]\n \
-CMD ["python", "manage.py", "migrate"]\n \
+				CMD ["python", "-m", "manage.py", "makemigrations"]\n \
+				CMD ["python", "manage.py", "migrate"]\n \
 
-EXPOSE 8000\n \
+				EXPOSE 8000\n \
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile;
+				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile;
 				
 				sh 'docker build -t victor435/python_app .; \
 				docker login -u victor435 -p 1doi3patru5sase; \
