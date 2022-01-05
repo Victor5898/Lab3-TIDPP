@@ -87,6 +87,8 @@ pipeline
 				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile';
 
 				sh 'git add . && \
+				git config --global user.email "victor.covrig321@gmail.com" && \
+				git config --global user.name "Victor5898" && \
 				git commit -m "Change pipeline file" && \
 				git push origin master'
 				
