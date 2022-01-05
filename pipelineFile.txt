@@ -68,7 +68,7 @@ pipeline
 		{
 			steps
 			{
-				sh 'touch Dockerfile && echo -e "# Dockerfile\n \
+				sh 'echo -e "# Dockerfile\n \
 				FROM python:3.10.1-buster\n \
 				ENV PYTHONDONTWRITEBYTECODE 1\n \
 				ENV PYTHONUNBUFFERED 1\n \
