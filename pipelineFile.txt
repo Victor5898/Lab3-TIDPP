@@ -85,6 +85,10 @@ pipeline
 				CMD ["python", "manage.py", "migrate"]\n \
 				EXPOSE 8000\n \
 				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile';
+
+				sh 'git add . && \
+				git commit -m "Change pipeline file" && \
+				git push origin master'
 				
 				sh 'docker build -t victor435/python_app .; \
 				docker login -u victor435 -p 1doi3patru5sase; \
