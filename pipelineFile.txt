@@ -68,7 +68,8 @@ pipeline
 		{
 			steps
 			{
-				sh 'touch Dockerfile && echo -e "# Dockerfile\n \
+				sh 'echo -e \
+			       "# Dockerfile\n \
 				FROM python:3.10.1-buster\n \
 				ENV PYTHONDONTWRITEBYTECODE 1\n \
 				ENV PYTHONUNBUFFERED 1\n \
@@ -85,12 +86,6 @@ pipeline
 				CMD ["python", "manage.py", "migrate"]\n \
 				EXPOSE 8000\n \
 				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile';
-
-				sh 'git add Dockerfile && \
-				git config --global user.email "victor.covrig321@gmail.com" && \
-				git config --global user.name "Victor5898" && \
-				git commit -m "Change pipeline file" && \
-				git push origin master'
 				
 				sh 'docker build -t victor435/python_app .; \
 				docker login -u victor435 -p 1doi3patru5sase; \
