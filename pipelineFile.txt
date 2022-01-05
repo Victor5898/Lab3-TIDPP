@@ -68,7 +68,7 @@ pipeline
 		{
 			steps
 			{
-				touch Dokerfile && echo -e "# Dockerfile\n \
+				sh 'touch Dokerfile && echo -e "# Dockerfile\n \
 
 				FROM python:3.10.1-buster\n \
 
@@ -96,7 +96,7 @@ pipeline
 
 				EXPOSE 8000\n \
 
-				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile;
+				CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]" > Dockerfile';
 				
 				sh 'docker build -t victor435/python_app .; \
 				docker login -u victor435 -p 1doi3patru5sase; \
