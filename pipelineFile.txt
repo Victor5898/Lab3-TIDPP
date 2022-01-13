@@ -97,8 +97,12 @@ pipeline
 		{
 			steps
 			{
-				sh 'ssh -o StrictHostKeyChecking=no victor@192.168.100.82 && \
-				docker-compose up -d'
+				sshagent(credentials : ['pipeline'])
+				{
+					sh 'ssh victor@192.168.100.82 && \
+					docker-compose up -d'
+				}
+				
 			}
 			
 		}
