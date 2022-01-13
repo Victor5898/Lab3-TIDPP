@@ -81,7 +81,6 @@ pipeline
 				CMD . /app/${BUILD_TAG}/Scripts/activate\n \
 				COPY requirements.txt /app/\n \
 				RUN pip install -r /app/requirements.txt\n \
-				COPY . /app/\n \
 				CMD ["python", "-m", "manage.py", "makemigrations"]\n \
 				CMD ["python", "manage.py", "migrate"]\n \
 				EXPOSE 8000\n \
