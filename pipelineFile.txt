@@ -97,7 +97,7 @@ pipeline
 		{
 			steps
 			{
-				sshagent(credentials : ['pipeline'])
+				sshagent(credentials : ['jenkins'])
 				{
 					sh 'ssh victor@192.168.100.82 && \
 					docker-compose up -d'
