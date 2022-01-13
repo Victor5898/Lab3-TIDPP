@@ -97,7 +97,8 @@ pipeline
 		{
 			steps
 			{
-				echo "Deployment step"
+				sh 'ssh -o StrictHostKeyChecking=no victor@192.168.100.82 \
+				docker-compose up -d'
 			}
 			
 		}
