@@ -97,12 +97,9 @@ pipeline
 		{
 			steps
 			{
-				sshagent(credentials : ['jenkins'])
-				{
-					sh 'ssh -o StrictHostKeyChecking=no victor@192.168.100.82 uptime'
-            				sh 'ssh -v victor@192.168.100.82'
-            				sh 'docker-compose -d up'
-				}
+            			sh 'ssh victor@192.168.100.82'
+				sh 'cd Desktop'
+            			sh 'docker-compose up -d'
 			}	
 		}
 	}
