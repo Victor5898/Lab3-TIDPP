@@ -97,12 +97,12 @@ pipeline
 		{
 			steps
 			{
-                		sshagent(['jenkins']) 
-				{
-                    			sh ''' cd Desktop;
-					       docker-compose up -d;
-                    			'''
-                		}
+				sh ''' ssh victor@192.168.100.82 <<'ENDSSH'	
+                    			cd Desktop;
+				       	docker-compose up -d;	
+					ENDSSH
+                    		  '''
+				
 			}	
 		}
 	}
