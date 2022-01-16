@@ -97,8 +97,8 @@ pipeline
 		{
 			steps
 			{
-				sh ''' ssh victor@192.168.100.83 "cd Desktop && docker-compose up -d"
-                    		  '''
+				bat """ ssh victor@192.168.100.83 "cd Desktop && docker-compose up -d"
+                    		  """
 				
 			}	
 		}
