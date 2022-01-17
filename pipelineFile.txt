@@ -99,7 +99,7 @@ pipeline
 			{
 				script
 				{
-					sh 'ssh -tt victor@10.35.21.101 "cd Desktop"'
+					sh 'ssh -tt victor@10.35.21.101 "cd Desktop docker-compose up -d"'
 				}
 			}	
 		}
