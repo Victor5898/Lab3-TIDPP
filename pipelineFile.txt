@@ -97,7 +97,7 @@ pipeline
 		{
 			steps
 			{
-				bat """ ssh victor@192.168.100.83 "cd Desktop"
+				bat """ ssh -tt victor@192.168.100.83 "cd Desktop"
                     		  """
 				
 			}	
